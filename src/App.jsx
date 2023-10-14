@@ -8,7 +8,7 @@ export default function App() {
   const fetchNews = async () => {
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?q=apple&from=2023-07-26&to=2023-07-26&sortBy=popularity&apiKey=9c7e85e144b045c685f47a917822913d&page=${page}&pageSize=${pageSize}`
+        `https://newsapi.org/v2/everything?q=tesla&from=2023-09-14&sortBy=publishedAt&apiKey=${import.meta.env.VITE_API_BASE_URL}&page=${page}&pageSize=${pageSize} `
       );
       const data = await response.json();
       console.log(data);
@@ -21,18 +21,19 @@ export default function App() {
     fetchNews();
   }, [page, pageSize]);
 
+
   return (
     <div className="App container flex justify-center flex-col mx-auto px-4">
-  <Navbar />
-       <select
-         className="border rounded p-2 my-4"
+      <Navbar />
+      <select
+        className="border rounded p-2 my-4"
         onChange={(e) => setPageSize(e.target.value)}
-       >
-      <option>Articles per page</option>
+      >
+        <option>Articles per page</option>
         <option value={12}>12</option>
-         <option value={48}>50</option>
-       <option value={100}>100</option>
-  </select>
+        <option value={48}>50</option>
+        <option value={100}>100</option>
+      </select>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {results.map((result, index) => (
           <div
@@ -59,10 +60,10 @@ export default function App() {
           </div>
         ))}
       </div>
-   
+
       <div className="flex justify-center mt-4">
         {page === 1 ? null : (
-          
+
           <button
             onClick={() => setPage(page - 1)}
             className="bg-gray-300 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2"
@@ -83,7 +84,7 @@ export default function App() {
           {page + 1}
         </button>
       </div>
-     
+
     </div>
   );
 }
