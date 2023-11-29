@@ -8,7 +8,7 @@ export default function App() {
   const fetchNews = async () => {
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?q=tesla&from=2023-09-14&sortBy=publishedAt&apiKey=${import.meta.env.VITE_API_BASE_URL}&page=${page}&pageSize=${pageSize} `
+        `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${import.meta.env.VITE_API_BASE_URL}&page=${page}&pageSize=${pageSize} `
       );
       const data = await response.json();
       console.log(data);
@@ -88,6 +88,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
